@@ -12,9 +12,9 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<javaVersion>16</javaVersion>
-		<maven.compiler.source>16</maven.compiler.source>
-		<maven.compiler.target>16</maven.compiler.target>
+		<javaVersion>1.8</javaVersion>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
