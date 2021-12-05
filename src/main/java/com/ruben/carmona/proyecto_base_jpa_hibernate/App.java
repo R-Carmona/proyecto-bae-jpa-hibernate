@@ -1,10 +1,8 @@
 package com.ruben.carmona.proyecto_base_jpa_hibernate;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 
 
@@ -16,13 +14,9 @@ public class App
 {
     public static void main( String[] args )
     {
-     
-    	StandardServiceRegistry sr = new StandardServiceRegistryBuilder().configure().build();
     	
-    	SessionFactory sf = new MetadataSources(sr).getMetadataBuilder().build().buildSessionFactory();       	
-        
-    	//Abrimos la sessión.    	
-    	Session session = sf.openSession();   	
+    	EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyecto-base-jpa-hibernate");     
+    	EntityManager em = emf.createEntityManager();
     	
     	User user = new User();
     	user.setId(1);
@@ -35,17 +29,17 @@ public class App
     	user2.setUserName("Isabel");
     	user2.setUserMesagge("Bienvenido Isabel a Hibernate");
     	
-    	session.getTransaction().begin();
+    	em.getTransaction().begin();
     	
-    	session.save(user);
-    	session.save(user2);    	
+    	em.persist(user);
+    	em.persist(user2);    	
     	
     	//Comiteamos a la bbdd.
-    	session.getTransaction().commit();
+    	em.getTransaction().commit();
     	
     	
     	//Cerramos la session.
-    	session.close();   	
+    	em.close();   	
     	
     }
 }
